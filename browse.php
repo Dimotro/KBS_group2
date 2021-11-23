@@ -10,6 +10,7 @@ $SortName = "price_low_high";
 $AmountOfPages = 0;
 $queryBuildResult = "";
 
+een balzak
 
 if (isset($_GET['category_id'])) {
     $CategoryID = $_GET['category_id'];
