@@ -1,1 +1,1 @@
-print balzak
+een balzak
