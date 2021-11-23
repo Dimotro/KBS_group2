@@ -37,6 +37,7 @@ include "CartFuncties.php";
 
 </body>
 </html>
+<?php
 $StockItem = getStockItem($_GET['id'], $databaseConnection);
 $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
 ?>

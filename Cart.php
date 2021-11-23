@@ -1,5 +1,6 @@
 <?php
 include "cartfuncties.php";
+include "header.php";
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -8,26 +9,28 @@ include "cartfuncties.php";
     <title>Winkelwagen</title>
 </head>
 <body>
-  <?php include "header.php" ?>
 <h1>Inhoud Winkelwagen</h1>
 
 <?php
 $cart = getCart();
 print('<table border="2">') ;
-print('<tr><th>Artikelnummer</th><th>Aantal</th><th>Prijs</th><tr>');
+print('<tr><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
 
 $totaal = 0;
 
 foreach($cart as $number => $aantal)
 {
-    $prijs = $aantal * 2.5;
+    $stockitem = getStockItem($number, $databaseConnection);
 
-    $totaal = $totaal += $prijs;
-    print("<tr>");
-    print("<td>" . $number . "</td>");
-    print("<td>" . $aantal . "</td>");
-    print("<td>" . $prijs . "</td>");
-    print("</tr>");
+    if (isset($stockitem)){
+        $prijs = $aantal * 2.5;
+        $totaal = $totaal += $prijs;
+        print("<tr>");
+        print("<td>" . ($stockitem["StockItemName"]) . "</td>");
+        print("<td>" . $aantal . "</td>");
+        print("<td>" . $prijs . "</td>");
+        print("</tr>");
+    }
 
 
 }
@@ -41,6 +44,6 @@ print("<td>" . $totaal . "</td>");
 //etc.
 
 ?>
-<p><a href='view.php?id=0'>Naar artikelpagina van artikel 0</a></p>
+<p><a href='view.php?id=122'>Naar artikelpagina van artikel 122</a></p>
 </body>
 </html>
