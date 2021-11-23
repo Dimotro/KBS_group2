@@ -15,7 +15,7 @@ include "header.php";
 <?php
 $cart = getCart();
 print('<table border="2">') ;
-print('<tr><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
+print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
 
 $totaal = 0;
 
