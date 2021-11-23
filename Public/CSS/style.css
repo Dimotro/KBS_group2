@@ -479,3 +479,11 @@ ul#ul-class-price li {
     border: 1px rgb(98, 158, 255) solid;
     color: #fff;
 }
+
+.cart_button{
+  padding:10px;
+  cursor: pointer;
+}
+.cart_button:hover{
+  text-decoration:underline;
+}

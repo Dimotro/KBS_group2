@@ -24,3 +24,33 @@ function addProductToCart($stockItemID){
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
 }
+
+function removeProductToCart($stockItemID){
+    $cart = getCart();                          // eerst de huidige cart ophalen
+
+    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
+        $cart[$stockItemID] = 0;                   //zo ja:  aantal met 1 verhogen
+    }
+
+    saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
+}
+
+function plusProductToCart($stockItemID){
+    $cart = getCart();                          // eerst de huidige cart ophalen
+
+    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
+        $cart[$stockItemID] += 1;                   //zo ja:  aantal met 1 verhogen
+    }
+
+    saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
+}
+
+function minProductToCart($stockItemID){
+    $cart = getCart();                          // eerst de huidige cart ophalen
+
+    if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
+        $cart[$stockItemID] -= 1;                  //zo ja:  aantal met 1 verhogen
+    }
+
+    saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart
+}
