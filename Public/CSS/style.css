@@ -484,6 +484,13 @@ ul#ul-class-price li {
   padding:10px;
   cursor: pointer;
 }
-.cart_button:hover{
-  text-decoration:underline;
+
+.cart_product_link{
+  color: white;
+  text-decoration: none;
+}
+
+.cart_product_link:hover{
+  color: white;
+  text-decoration: underline !important;
 }

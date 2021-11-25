@@ -49,7 +49,9 @@ function minProductToCart($stockItemID){
     $cart = getCart();                          // eerst de huidige cart ophalen
 
     if(array_key_exists($stockItemID, $cart)){  //controleren of $stockItemID(=key!) al in array staat
-        $cart[$stockItemID] -= 1;                  //zo ja:  aantal met 1 verhogen
+      if ($cart[$stockItemID] > 0) {      //Kan je niet minder dan 0 aantal hebben
+        $cart[$stockItemID] -= 1;
+      }                
     }
 
     saveCart($cart);                            // werk de "gedeelde" $_SESSION["cart"] bij met de bijgewerkte cart

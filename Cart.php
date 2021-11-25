@@ -14,7 +14,7 @@ include "header.php";
 
 <?php
 $cart = getCart();
-print('<table border="2">') ;
+print('<table border="2">');
 print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
 
 $totaal = 0;
@@ -31,7 +31,7 @@ foreach($cart as $number => $aantal)
         $totaal = $totaal += $prijs;
         print("<tr>");
         print("<td><img style='width:120px;' src='Public/StockItemIMG/".$StockItemImage[0]['ImagePath']."'></td>");
-        print("<td>" . ($stockitem["StockItemName"]) . "</td>");
+        print("<td><a class='cart_product_link' href='view.php?id=". ($stockitem["StockItemID"]) ."'>" . ($stockitem["StockItemName"]) . "</a></td>");
         print("<td>" . $aantal . "</td>");
         print("<td>" . $prijs . "</td>");
         print("<td><a class='cart_button' href='cart.php?min=true&id=". ($stockitem["StockItemID"]) ."'> - </a></td>");
@@ -62,6 +62,7 @@ if (isset($_GET["plus"])) {              // zelfafhandelend formulier
 }
 
 print("<th>Totaal</th>");
+print("<td></td>");
 print("<td></td>");
 print("<td>" . $totaal . "</td>");
 
