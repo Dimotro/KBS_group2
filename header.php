@@ -50,11 +50,12 @@ $databaseConnection = connectToDatabase();
 
         <ul id="ul-class-navigation">
             <li>
-                <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
-            </li>
-            <li>
                 <a href="browse.php" class="HrefDecoration"><i class="fas fa-search nav-icon"></i> Zoeken</a>
             </li>
+            <li>
+                <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
+            </li>
+
         </ul>
 
 <!-- einde code voor US3 zoeken -->
