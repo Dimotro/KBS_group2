@@ -13,6 +13,23 @@ include "header.php";
 <h1>Inhoud Winkelwagen</h1>
 
 <?php
+if (isset($_GET["verwijderen"])) {              // zelfafhandelend formulier
+    $stockItemID = $_GET["id"];
+    removeProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+    header("Refresh:0; url=cart.php");
+}
+
+if (isset($_GET["min"])) {              // zelfafhandelend formulier
+    $stockItemID = $_GET["id"];
+    minProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+    header("Refresh:0; url=cart.php");
+}
+
+if (isset($_GET["plus"])) {              // zelfafhandelend formulier
+    $stockItemID = $_GET["id"];
+    plusProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+    header("Refresh:0; url=cart.php");
+}
 $cart = getCart();
 print('<table border="2">');
 print('<tr><th>Artikelplaatje</th><th>Artikelnaam</th><th>Aantal</th><th>Prijs</th><tr>');
@@ -42,25 +59,6 @@ foreach($cart as $number => $aantal)
 
 
 }
-
-if (isset($_GET["delete"])) {              // zelfafhandelend formulier
-    $stockItemID = $_GET["id"];
-    removeProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-    header("Refresh:0; url=cart.php");
-}
-
-if (isset($_GET["min"])) {              // zelfafhandelend formulier
-    $stockItemID = $_GET["id"];
-    minProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-    header("Refresh:0; url=cart.php");
-}
-
-if (isset($_GET["plus"])) {              // zelfafhandelend formulier
-    $stockItemID = $_GET["id"];
-    plusProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-    header("Refresh:0; url=cart.php");
-}
-
 print("<th>Totaal</th>");
 print("<td></td>");
 print("<td></td>");
@@ -72,6 +70,6 @@ print("<td>" . $totaal . "</td>");
 //etc.
 
 ?>
-<p><a href='view.php?id=122'>Naar artikelpagina van artikel 122</a></p>
+<p><a href='index.php'>Verder Winkelen</a></p>
 </body>
 </html>
