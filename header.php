@@ -50,10 +50,10 @@ $databaseConnection = connectToDatabase();
 
         <ul id="ul-class-navigation">
             <li>
-                <a href="Cart.php" class="HrefDecoration"><i class="fas fa-cart-shopping"></i> Winkelmand</a>
+                <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
             </li>
             <li>
-                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search search"></i> Zoeken</a>
+                <a href="browse.php" class="HrefDecoration"><i class="fas fa-search nav-icon"></i> Zoeken</a>
             </li>
         </ul>
 

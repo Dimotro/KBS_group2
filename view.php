@@ -31,7 +31,7 @@ include "CartFuncties.php";
     if (isset($_POST["submit"])) {              // zelfafhandelend formulier
         $stockItemID = $_POST["stockItemID"];
         addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-        print("Product toegevoegd aan <a href='cart.php'> winkelmandje!</a>");
+        print("Product is toegevoegd aan winkel mand");
     }
 ?>
 
