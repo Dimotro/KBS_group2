@@ -13,7 +13,7 @@ include "header.php";
 <h1>Inhoud Winkelwagen</h1>
 
 <?php
-if (isset($_GET["verwijderen"])) {              // zelfafhandelend formulier
+if (isset($_GET["delete"])) {              // zelfafhandelend formulier
     $stockItemID = $_GET["id"];
     removeProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
     header("Refresh:0; url=cart.php");
