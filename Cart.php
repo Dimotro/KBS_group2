@@ -43,6 +43,8 @@ foreach($cart as $number => $aantal)
 
 }
 
+print_r($cart);
+
 if (isset($_GET["delete"])) {              // zelfafhandelend formulier
     $stockItemID = $_GET["id"];
     removeProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
@@ -61,10 +63,16 @@ if (isset($_GET["plus"])) {              // zelfafhandelend formulier
     header("Refresh:0; url=cart.php");
 }
 
+if (isset($_GET["order"])) {              // zelfafhandelend formulier
+    saveOrder($databaseConnection);
+    header("Refresh:0; url=cart.php");
+}
+
 print("<th>Totaal</th>");
 print("<td></td>");
 print("<td></td>");
 print("<td>" . $totaal . "</td>");
+
 
 //gegevens per artikelen in $cart (naam, prijs, etc.) uit database halen
 //totaal prijs berekenen
@@ -72,6 +80,7 @@ print("<td>" . $totaal . "</td>");
 //etc.
 
 ?>
-<p><a href='view.php?id=122'>Naar artikelpagina van artikel 122</a></p>
+<!-- <p><a href='view.php?id=122'>Naar artikelpagina van artikel 122</a></p> -->
+<a class="cart_button_order" href="cart.php?order=true">Bestellen</a>
 </body>
 </html>

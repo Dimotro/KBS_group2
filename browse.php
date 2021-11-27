@@ -2,7 +2,7 @@
 <?php
 include __DIR__ . "/header.php";
 
-print sprintf(" %0.2f", berekenVerkoopPrijs(10,21));
+// print sprintf(" %0.2f", berekenVerkoopPrijs(10,21));
 
 $ReturnableResult = null;
 $Sort = "SellPrice";

@@ -494,3 +494,23 @@ ul#ul-class-price li {
   color: white;
   text-decoration: underline !important;
 }
+
+.cart_button_order{
+  width: 220px;
+  height: 80px;
+  display: inline-block;
+  line-height: 72px;
+  text-align: center;
+  background-color: black;
+  color: white;
+  border: 1px solid white;
+  position: absolute;
+  font-size: 32px;
+  top: 90%;
+  left: 80%;
+}
+
+.cart_button_order:hover{
+  color: white;
+  text-decoration: underline !important;
+}

@@ -23,9 +23,9 @@ function connectToDatabase() {
 function getHeaderStockGroups($databaseConnection) {
     $Query = "
                 SELECT StockGroupID, StockGroupName, ImagePath
-                FROM stockgroups 
+                FROM stockgroups
                 WHERE StockGroupID IN (
-                                        SELECT StockGroupID 
+                                        SELECT StockGroupID
                                         FROM stockitemstockgroups
                                         ) AND ImagePath IS NOT NULL
                 ORDER BY StockGroupID ASC";
@@ -38,9 +38,9 @@ function getHeaderStockGroups($databaseConnection) {
 function getStockGroups($databaseConnection) {
     $Query = "
             SELECT StockGroupID, StockGroupName, ImagePath
-            FROM stockgroups 
+            FROM stockgroups
             WHERE StockGroupID IN (
-                                    SELECT StockGroupID 
+                                    SELECT StockGroupID
                                     FROM stockitemstockgroups
                                     ) AND ImagePath IS NOT NULL
             ORDER BY StockGroupID ASC";
@@ -54,15 +54,15 @@ function getStockGroups($databaseConnection) {
 function getStockItem($id, $databaseConnection) {
     $Result = null;
 
-    $Query = " 
-           SELECT SI.StockItemID, 
-            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice, 
+    $Query = "
+           SELECT SI.StockItemID,
+            (RecommendedRetailPrice*(1+(TaxRate/100))) AS SellPrice,
             StockItemName,
             CONCAT('Voorraad: ',QuantityOnHand)AS QuantityOnHand,
-            SearchDetails, 
+            SearchDetails,
             (CASE WHEN (RecommendedRetailPrice*(1+(TaxRate/100))) > 50 THEN 0 ELSE 6.95 END) AS SendCosts, MarketingComments, CustomFields, SI.Video,
-            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath   
-            FROM stockitems SI 
+            (SELECT ImagePath FROM stockgroups JOIN stockitemstockgroups USING(StockGroupID) WHERE StockItemID = SI.StockItemID LIMIT 1) as BackupImagePath
+            FROM stockitems SI
             JOIN stockitemholdings SIH USING(stockitemid)
             JOIN stockitemstockgroups ON SI.StockItemID = stockitemstockgroups.StockItemID
             JOIN stockgroups USING(StockGroupID)
@@ -84,7 +84,7 @@ function getStockItemImage($id, $databaseConnection) {
 
     $Query = "
                 SELECT ImagePath
-                FROM stockitemimages 
+                FROM stockitemimages
                 WHERE StockItemID = ?";
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
@@ -94,4 +94,43 @@ function getStockItemImage($id, $databaseConnection) {
     $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
 
     return $R;
+}
+
+function placeOrder($cart, $databaseConnection) {
+
+    $Query = "
+
+      INSERT INTO `orders`()
+
+        ";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $id);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+    return $R;
+}
+
+function updateStock($cart, $databaseConnection) {
+
+  foreach ($cart as $productId => $aantal) {
+    $Query = "
+
+      UPDATE stockitemholdings
+      SET QuantityOnHand = QuantityOnHand-".$aantal."
+      WHERE StockItemID = ?;
+
+        ";
+
+    $Statement = mysqli_prepare($databaseConnection, $Query);
+    mysqli_stmt_bind_param($Statement, "i", $productId);
+    mysqli_stmt_execute($Statement);
+    $R = mysqli_stmt_get_result($Statement);
+    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
+
+    return $R;
+  }
+
 }
