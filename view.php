@@ -107,14 +107,21 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                         <h6> Inclusief BTW </h6>
                         <form method="post">
                             <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
-                            <input type="submit" name="submit" value="Voeg toe aan winkelmandje">
+                            <?php $cart = getCart();
+                                    if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart[$stockItemID]){ //checkt of het product nog op voorraad is
+                                      ?><input type="submit" name="submit" value="Voeg toe aan winkelmandje"><?php
+                                    }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
+                                      ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmandje"></div><?php
+                                    } ?>
+                            <!-- <input type="submit" name="submit" value="Voeg toe aan winkelmandje"> -->
                         </form>
 
                         <?php
                         if (isset($_POST["submit"])) {              // zelfafhandelend formulier
                             $stockItemID = $_POST["stockItemID"];
                             addProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-                            print("Product is toegevoegd aan winkel mand");
+                            print("<h6>Product is toegevoegd aan winkel mand</h6>");
+                            print("<a href='cart.php' class='view_button_cart'>Naar winkelmandje</a>");
                         }
                         ?>
                     </div>
