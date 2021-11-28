@@ -388,7 +388,7 @@ ul#ul-class-price li {
     font-size: 22px;
     text-transform: uppercase;
     font-weight: bold;
-    margin-top: 25px;
+    margin-top: 40px;
 }
 .StockItemPriceText:hover {
     text-decoration: none;
@@ -480,9 +480,18 @@ ul#ul-class-price li {
     color: #fff;
 }
 
-.cart_button{
+.cart_button_small{
   padding:10px;
   cursor: pointer;
+}
+
+.cart_button_small_false{
+  padding:10px;
+  pointer-events: none;
+}
+
+.cart_button_hover{
+  cursor: not-allowed;
 }
 
 .cart_product_link{
@@ -495,22 +504,29 @@ ul#ul-class-price li {
   text-decoration: underline !important;
 }
 
-.cart_button_order{
-  width: 220px;
-  height: 80px;
+.cart_button{
+  width: 200px;
+  height: 50px;
   display: inline-block;
-  line-height: 72px;
+  line-height: 48px;
   text-align: center;
   background-color: black;
   color: white;
   border: 1px solid white;
-  position: absolute;
-  font-size: 32px;
-  top: 90%;
-  left: 80%;
+  font-size: 22px;
 }
 
-.cart_button_order:hover{
+.cart_button:hover{
   color: white;
   text-decoration: underline !important;
+}
+
+.cart_buttons_box{
+  position: fixed;
+  bottom: 60px;
+  right: 30px;
+}
+
+.view_button_false{
+  pointer-events: none;
 }
