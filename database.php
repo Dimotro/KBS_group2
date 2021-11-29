@@ -120,7 +120,7 @@ function updateStock($cart, $databaseConnection) {
 
       UPDATE stockitemholdings
       SET QuantityOnHand = QuantityOnHand-".$aantal."
-      WHERE StockItemID = ?;
+      WHERE StockItemID =?;
 
         ";
 

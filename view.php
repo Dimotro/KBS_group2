@@ -108,7 +108,12 @@ $StockItemImage = getStockItemImage($_GET['id'], $databaseConnection);
                         <form method="post">
                             <input type="number" name="stockItemID" value="<?php print($stockItemID) ?>" hidden>
                             <?php $cart = getCart();
-                                    if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart[$stockItemID]){ //checkt of het product nog op voorraad is
+                                    if (isset($cart[$stockItemID])) {
+                                      $cart_aantal = $cart[$stockItemID];
+                                    }else{
+                                      $cart_aantal = 0;
+                                    }
+                                    if (preg_replace('/\D/', '', $StockItem["QuantityOnHand"]) > $cart_aantal){ //checkt of het product nog op voorraad is
                                       ?><input type="submit" name="submit" value="Voeg toe aan winkelmandje"><?php
                                     }else{ // zo niet dan krijgt deze knop een class waardoor je deze niet meer gebruiken kan
                                       ?><div class="cart_button_hover"><input class='view_button_false' type="submit" name="submit" value="Voeg toe aan winkelmandje"></div><?php
