@@ -119,18 +119,14 @@ function updateStock($cart, $databaseConnection) {
     $Query = "
 
       UPDATE stockitemholdings
-      SET QuantityOnHand = QuantityOnHand-".$aantal."
+      SET QuantityOnHand = QuantityOnHand-?
       WHERE StockItemID =?;
 
         ";
 
     $Statement = mysqli_prepare($databaseConnection, $Query);
-    mysqli_stmt_bind_param($Statement, "i", $productId);
+    mysqli_stmt_bind_param($Statement, "ii", $aantal, $productId);
     mysqli_stmt_execute($Statement);
-    $R = mysqli_stmt_get_result($Statement);
-    $R = mysqli_fetch_all($R, MYSQLI_ASSOC);
-
-    return $R;
   }
 
 }
