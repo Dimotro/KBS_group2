@@ -29,6 +29,7 @@ $databaseConnection = connectToDatabase();
             </a></div>
         <div class="col-8" id="CategoriesBar">
             <ul id="ul-class">
+
                 <?php
                 $HeaderStockGroups = getHeaderStockGroups($databaseConnection);
 
@@ -54,6 +55,9 @@ $databaseConnection = connectToDatabase();
             </li>
             <li>
                 <a href="Cart.php" class="HrefDecoration"><i class="fas fa-shopping-cart nav-icon"></i> Winkelmand</a>
+            </li>
+            <li>
+                <a href="login.php" class="HrefDecoration"><i class="fas fa-sign-in-alt"></i> inloggen</a>
             </li>
 
         </ul>

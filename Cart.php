@@ -14,23 +14,23 @@ include "header.php";
 
 <?php
 // komt door merge conflict (waarschijnlijk useless)
-// if (isset($_GET["delete"])) {              // zelfafhandelend formulier
-//     $stockItemID = $_GET["id"];
-//     removeProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-//     header("Refresh:0; url=cart.php");
-// }
-//
-// if (isset($_GET["min"])) {              // zelfafhandelend formulier
-//     $stockItemID = $_GET["id"];
-//     minProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-//     header("Refresh:0; url=cart.php");
-// }
-//
-// if (isset($_GET["plus"])) {              // zelfafhandelend formulier
-//     $stockItemID = $_GET["id"];
-//     plusProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
-//     header("Refresh:0; url=cart.php");
-// }
+ if (isset($_GET["delete"])) {              // zelfafhandelend formulier
+     $stockItemID = $_GET["id"];
+     removeProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+     header("Refresh:0; url=cart.php");
+ }
+
+ if (isset($_GET["min"])) {              // zelfafhandelend formulier
+     $stockItemID = $_GET["id"];
+     minProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+     header("Refresh:0; url=cart.php");
+ }
+
+ if (isset($_GET["plus"])) {              // zelfafhandelend formulier
+     $stockItemID = $_GET["id"];
+     plusProductToCart($stockItemID);         // maak gebruik van geïmporteerde functie uit cartfuncties.php
+     header("Refresh:0; url=cart.php");
+ }
 
 if (isset($_GET["delete"])) {              // zelfafhandelend formulier
     $stockItemID = $_GET["id"];
