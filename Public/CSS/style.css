@@ -530,3 +530,7 @@ ul#ul-class-price li {
 .view_button_false{
   pointer-events: none;
 }
+.hallo_user {
+    margin-left: 32%;
+    font-size: 20px;
+}

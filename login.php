@@ -4,13 +4,13 @@ include "header.php";
 <div id="CenteredContent">
     <h1>Inloggen</h1>
 
-<form method="POST">
-    <label for="email">Emailadres:</label>
-    <input type="text" placeholder="example@email.com" name="email" id="email" required>
+<form method="GET" action="login.php">
+    <label for="username">Emailadres:</label>
+    <input type="text" placeholder="example@email.com" name="username" id="username" required>
     <br>
-    <label for="wachtwoord">Wachtwoord:</label>
+    <label for="password">Wachtwoord:</label>
 
-    <input type="password" name="wachtwoord" id="wachtwoord" required>
+    <input type="password" name="password" id="password" required>
 
     <button type="submit" name="submit"class="btn  mt-2 btn-primary">Log In</button>
     <br>
@@ -18,13 +18,13 @@ include "header.php";
 </form>
 
 <?php
-if (isset($_GET["login"])){
-    if ($_GET["username"] == "inkoper" && $_GET["password"] == "spekkoper"){
-        $_SESSION["ingelogd"] = TRUE;
+if (isset($_GET["submit"])){
+    if ($_GET["username"] === "inkoper" && $_GET["password"] === "spekkoper"){
+        $_SESSION["login"] = TRUE;
         print "U bent ingelogd";
         $_SESSION["username"] = $_GET["username"];
     }else{
-        $_SESSION["ingelogd"] = FALSE;
+        $_SESSION["login"] = FALSE;
         print "De inlog gegevens zijn fout";
     }
 }

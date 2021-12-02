@@ -186,6 +186,7 @@ if (isset($amount)) {
 }
 
 
+
     function getVoorraadTekst($actueleVoorraad) {
         if ($actueleVoorraad > 1000) {
             return "Ruime voorraad beschikbaar.";
@@ -194,7 +195,7 @@ if (isset($amount)) {
         }
     }
     function berekenVerkoopPrijs($adviesPrijs, $btw) {
-		return $btw * $adviesPrijs / 100 + $adviesPrijs;
+		return $btw * $adviesPrijs / 100 + $adviesPrijs ;
     }
 ?>
 
@@ -276,7 +277,7 @@ if (isset($amount)) {
 
                     <div id="StockItemFrameRight">
                         <div class="CenterPriceLeftChild">
-                            <h1 class="StockItemPriceText"><?php print sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])); ?></h1>
+                            <h1 class="StockItemPriceText"><?php print sprintf(" %0.2f", berekenVerkoopPrijs($row["RecommendedRetailPrice"], $row["TaxRate"])- $userKorting); ?></h1>
                             <h6>Inclusief BTW </h6>
                         </div>
                     </div>
